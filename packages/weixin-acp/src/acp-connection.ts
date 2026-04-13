@@ -94,14 +94,6 @@ export class AcpConnection {
               log(`thinking: ${update.content.text.slice(0, 100)}`);
             }
             break;
-          case "agent_message_chunk":
-            if (update._meta?.phase === "commentary") {
-              if (update.content.type === "text") {
-                log(`agent_message (commentary, skipped): ${update.content.text.slice(0, 100)}`);
-              }
-              return;
-            }
-            break;
         }
         const collector = this.collectors.get(params.sessionId);
         if (collector) {
